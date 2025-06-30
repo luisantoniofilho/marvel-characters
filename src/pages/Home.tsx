@@ -1,4 +1,12 @@
+import useHeros from "../hooks/useHeros";
+
 export default function Home() {
+  const { heros, isLoading, error } = useHeros();
+
+  console.log(heros);
+  console.log(isLoading);
+  console.log(error);
+
   return (
     <main className="mx-10 mt-4 flex flex-col">
       <section className="mb-8 flex flex-col items-center">
@@ -17,7 +25,7 @@ export default function Home() {
             <img className="w-3" src="/busca/Lupa/Shape.png" alt="Lupa" />
           </span>
           <input
-            className="placeholder:text-primary/60 h-full flex-1 bg-transparent outline-none placeholder:text-[8px]"
+            className="placeholder:text-primary/60 h-full flex-1 bg-transparent pb-1 outline-none placeholder:text-[8px]"
             type="text"
             placeholder="Procure por heróis"
           />
