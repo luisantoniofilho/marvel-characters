@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import HeroCard from "../components/HeroCard";
 import SearchBar from "../components/SearchBar";
 import type { HeroType } from "../types/HeroType";
@@ -15,9 +16,17 @@ export default function Home({
   setSelectedHero,
   heros,
 }: HomeProps) {
+  const navigate = useNavigate();
+
   const filteredHeros = (heros ?? []).filter((hero) =>
     hero.title.toLowerCase().includes(search.toLowerCase()),
   );
+
+  function handleCardClick(hero: HeroType) {
+    setSelectedHero(hero);
+
+    navigate("/hero");
+  }
 
   return (
     <main className="mx-10 mt-4 flex flex-col">
