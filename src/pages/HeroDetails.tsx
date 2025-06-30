@@ -6,16 +6,32 @@ type HeroDetailsProps = {
   search: string;
   setSearch: (value: string) => void;
   hero: HeroType | null;
+  favorites: number[];
+  setFavorites: React.Dispatch<React.SetStateAction<number[]>>;
 };
 
 export default function HeroDetails({
   search,
   setSearch,
   hero,
+  favorites,
+  setFavorites,
 }: HeroDetailsProps) {
   const navigate = useNavigate();
 
   if (!hero) return <p>Nenhum herói selecionado.</p>;
+
+  function toggleFavorite(id: number) {
+    if (favorites.includes(id)) {
+      setFavorites(favorites.filter((favId) => favId !== id));
+    } else {
+      if (favorites.length >= 5) {
+        alert("Você só pode favoritar até 5 heróis.");
+        return;
+      }
+      setFavorites([...favorites, id]);
+    }
+  }
 
   return (
     <main className="bg-tertiary text-textPrimary relative flex h-[95vh] w-full flex-col overflow-x-hidden">
@@ -50,9 +66,14 @@ export default function HeroDetails({
           <div className="mb-2 flex items-center gap-14">
             <h2 className="text-lg font-bold">{hero.title.toUpperCase()}</h2>
             <img
-              className="h-3"
-              src="/icones/heart/Path@3x.png"
+              className="h-3 cursor-pointer"
+              src={
+                favorites.includes(hero.id)
+                  ? "/icones/heart/Path@3x.png"
+                  : "/icones/heart/Path Copy 2@1,5x.svg"
+              }
               alt="Favoritar"
+              onClick={() => toggleFavorite(hero.id)}
             />
           </div>
 
@@ -60,7 +81,7 @@ export default function HeroDetails({
             {hero.description || "Descrição não disponível."}
           </p>
 
-          <div className="flex flex-col">
+          <div className="mb-8 flex flex-col">
             {/* Quadrinhos e filmes */}
             <div className="mb-2 flex flex-wrap gap-12 text-[8px]">
               <div className="flex flex-col gap-2">
@@ -106,7 +127,7 @@ export default function HeroDetails({
           <img
             src={hero.image}
             alt={hero.title}
-            className="w-[250px] drop-shadow-xl"
+            className="w-[400px] drop-shadow-xl"
           />
         </div>
       </section>

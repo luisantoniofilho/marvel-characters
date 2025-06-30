@@ -41,6 +41,8 @@ export default function App() {
                   search={search}
                   setSearch={setSearch}
                   hero={selectedHero}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
                 />
               }
             />
