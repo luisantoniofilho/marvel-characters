@@ -1,12 +1,23 @@
 import HeroCard from "../components/HeroCard";
 import SearchBar from "../components/SearchBar";
+import type { HeroType } from "../types/HeroType";
 
-export default function Home() {
-  const { heros, isLoading, error } = useHeros();
+type HomeProps = {
+  search: string;
+  setSearch: (value: string) => void;
+  setSelectedHero: React.Dispatch<React.SetStateAction<HeroType | null>>;
+  heros: HeroType[];
+};
 
-  console.log(heros);
-  console.log(isLoading);
-  console.log(error);
+export default function Home({
+  search,
+  setSearch,
+  setSelectedHero,
+  heros,
+}: HomeProps) {
+  const filteredHeros = (heros ?? []).filter((hero) =>
+    hero.title.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <main className="mx-10 mt-4 flex flex-col">
@@ -30,7 +41,9 @@ export default function Home() {
       </section>
 
       <section className="mb-4 flex items-center justify-between text-[8px]">
-        <h4 className="text-textTertiary">Encontrados 20 heróis</h4>
+        <h4 className="text-textTertiary">
+          Encontrados {filteredHeros.length} heróis
+        </h4>
 
         <div className="flex items-center gap-4">
           {/* Ordenação por nome */}
