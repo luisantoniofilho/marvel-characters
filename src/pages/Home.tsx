@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import HeroCard from "../components/HeroCard";
 import SearchBar from "../components/SearchBar";
 import type { HeroType } from "../types/HeroType";
+import { useState } from "react";
 
 type HomeProps = {
   search: string;
@@ -16,16 +17,27 @@ export default function Home({
   setSelectedHero,
   heros,
 }: HomeProps) {
+  const [sortAsc, setSortAsc] = useState(true);
   const navigate = useNavigate();
 
-  const filteredHeros = (heros ?? []).filter((hero) =>
+  let filteredHeros = (heros ?? []).filter((hero) =>
     hero.title.toLowerCase().includes(search.toLowerCase()),
   );
+
+  filteredHeros = filteredHeros.sort((a, b) => {
+    if (a.title < b.title) return sortAsc ? -1 : 1;
+    if (a.title > b.title) return sortAsc ? 1 : -1;
+    return 0;
+  });
 
   function handleCardClick(hero: HeroType) {
     setSelectedHero(hero);
 
     navigate("/hero");
+  }
+
+  function toggleSort() {
+    setSortAsc(!sortAsc);
   }
 
   return (
@@ -56,7 +68,11 @@ export default function Home({
 
         <div className="flex items-center gap-4">
           {/* Ordenação por nome */}
-          <div className="flex items-center gap-3">
+          <div
+            className="flex cursor-pointer items-center gap-3"
+            onClick={toggleSort}
+            title={`Ordenar por nome ${sortAsc ? "Z/A" : "A/Z"}`}
+          >
             <span>
               <img
                 className="h-3"
@@ -65,12 +81,14 @@ export default function Home({
               />
             </span>
             <span className="text-primary/75 text-[7px]">
-              Ordernar por nome - A/Z
+              Ordenar por nome - {sortAsc ? "A/Z" : "Z/A"}
             </span>
             <p>
               <img
                 className="w-7"
-                src="/toggle/Group 2.svg"
+                src={
+                  sortAsc ? "/toggle/Group 2@3x.png" : "/toggle/Group 6@3x.png"
+                }
                 alt="Ordenar A/Z"
               />
             </p>
