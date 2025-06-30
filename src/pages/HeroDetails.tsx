@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import SearchBar from "../components/SearchBar";
 import type { HeroType } from "../types/HeroType";
 import { Label } from "../components/Label";
+import ComicCard from "../components/RecentComicCard";
 
 type HeroDetailsProps = {
   search: string;
@@ -129,14 +130,7 @@ export default function HeroDetails({
         <h2 className="mb-6 text-[10px] font-bold">Últimos lançamentos</h2>
         <div className="grid grid-cols-6 gap-6">
           {hero.recentComics.map((comic, i) => (
-            <div key={i} className="text-[6px]">
-              <img
-                className="mx-auto mb-2"
-                src={comic.image}
-                alt={comic.title}
-              />
-              <p className="font-semibold">{comic.title}</p>
-            </div>
+            <ComicCard key={i} image={comic.image} title={comic.title} />
           ))}
         </div>
       </section>
