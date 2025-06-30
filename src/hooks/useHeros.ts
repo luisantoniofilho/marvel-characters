@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import { Md5 } from "ts-md5";
+// Import para hash na Api da marvel
+// import { Md5 } from "ts-md5";
 
 export default function useHeros() {
   const [heros, setHeros] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Variável para teste
-  const heroName = "Thor";
-
   useEffect(() => {
     async function fetchHeroes() {
       try {
         setIsLoading(true);
         setError("");
+
+        /*API DA MARVEL
+        const heroName = "Thor";
+        // Variável para teste
 
         const ts = Date.now().toString();
         const publicKey = import.meta.env.VITE_MARVEL_PUBLIC_KEY;
@@ -27,16 +29,20 @@ export default function useHeros() {
 
         const res = await fetch(url);
         const json = await res.json();
-
         console.log("DATA: ", json);
+        */
 
-        if (!json.data?.results || json.data.results.length === 0) {
+        const res = await fetch("mock-heros.json");
+
+        const data = await res.json();
+
+        if (data.length === 0) {
           throw new Error("Nenhum herói encontrado");
         }
 
-        setHeros(json.data.results);
+        setHeros(data);
       } catch (error) {
-        console.error("Erro completo:", error);
+        console.error("Erro: ", error);
         setError(error instanceof Error ? error.message : "Erro desconhecido");
       } finally {
         setIsLoading(false);
