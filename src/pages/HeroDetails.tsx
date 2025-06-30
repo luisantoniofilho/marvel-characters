@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import SearchBar from "../components/SearchBar";
 import type { HeroType } from "../types/HeroType";
 
@@ -12,6 +13,8 @@ export default function HeroDetails({
   setSearch,
   hero,
 }: HeroDetailsProps) {
+  const navigate = useNavigate();
+
   if (!hero) return <p>Nenhum herói selecionado.</p>;
 
   return (
@@ -20,9 +23,10 @@ export default function HeroDetails({
       <section className="flex items-center justify-between px-16 py-2">
         <div className="flex items-center gap-8">
           <img
-            className="w-24"
+            className="w-24 cursor-pointer"
             src="/logo/Logo transparente.png"
             alt="Marvel logo"
+            onClick={() => navigate("/")}
           />
 
           <SearchBar
