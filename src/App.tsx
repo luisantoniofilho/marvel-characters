@@ -4,10 +4,15 @@ import Home from "./pages/Home";
 import HeroDetails from "./pages/HeroDetails";
 import useHeros from "./hooks/useHeros";
 import type { HeroType } from "./types/HeroType";
+import { useLocalStorage } from "./hooks/useLocaStorage";
 
 export default function App() {
   const [search, setSearch] = useState("");
   const [selectedHero, setSelectedHero] = useState<HeroType | null>(null);
+  const [favorites, setFavorites] = useLocalStorage<number[]>(
+    [],
+    "favorite-hero-ids",
+  );
 
   const { heros = [] } = useHeros();
 
@@ -24,6 +29,8 @@ export default function App() {
                   setSearch={setSearch}
                   setSelectedHero={setSelectedHero}
                   heros={heros}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
                 />
               }
             />
