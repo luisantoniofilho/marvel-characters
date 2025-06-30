@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import SearchBar from "../components/SearchBar";
 import type { HeroType } from "../types/HeroType";
+import { Label } from "../components/Label";
 
 type HeroDetailsProps = {
   search: string;
@@ -83,30 +84,21 @@ export default function HeroDetails({
 
           <div className="mb-8 flex flex-col">
             {/* Quadrinhos e filmes */}
-            <div className="mb-2 flex flex-wrap gap-12 text-[8px]">
-              <div className="flex flex-col gap-2">
-                <h5 className="text-[5px] font-bold">Quadrinhos</h5>
-                <div className="flex items-center gap-2">
-                  <img
-                    className="h-3"
-                    src="/icones/book/Group@3x.png"
-                    alt="Quadrinhos"
-                  />
-                  <span>{hero.comicsCount.toLocaleString()}</span>
-                </div>
-              </div>
+            <div className="mb-4 flex flex-wrap gap-8 text-[8px]">
+              <Label
+                title="Quadrinhos"
+                iconSrc="/icones/book/Group@3x.png"
+                iconAlt="Quadrinhos"
+                value={hero.comicsCount.toLocaleString()}
+              />
 
-              <div className="flex flex-col gap-2">
-                <h5 className="text-[5px] font-bold">Filmes</h5>
-                <div className="flex items-center gap-2">
-                  <img
-                    className="h-2.5"
-                    src="/icones/video/Shape@3x.png"
-                    alt="Filmes"
-                  />
-                  <span>{hero.moviesCount}</span>
-                </div>
-              </div>
+              <Label
+                title="Filmes"
+                iconSrc="/icones/video/Shape@3x.png"
+                iconAlt="Filmes"
+                iconClassName="h-2.5 md:h-3"
+                value={hero.moviesCount}
+              />
             </div>
 
             <div className="flex items-center gap-2 text-[7px] font-medium">
