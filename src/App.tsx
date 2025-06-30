@@ -6,13 +6,13 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="text-textSecondary font-display flex min-h-screen flex-col">
-        <div className="flex-grow">
+        <div className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/hero" element={<HeroDetails />} />
           </Routes>
         </div>
-        <footer className="bg-primary h-9 w-full"></footer>
+        <footer className="bg-primary h-[5vh] w-full"></footer>
       </div>
     </BrowserRouter>
   );
