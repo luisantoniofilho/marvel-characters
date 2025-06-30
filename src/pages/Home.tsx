@@ -1,4 +1,4 @@
-import useHeros from "../hooks/useHeros";
+import HeroCard from "../components/HeroCard";
 
 export default function Home() {
   const { heros, isLoading, error } = useHeros();
@@ -72,24 +72,13 @@ export default function Home() {
       </section>
 
       <section className="mb-16 grid grid-cols-4 gap-6">
-        {[...Array(20)].map((_, i) => (
-          <div key={i} className="mb-1.5 flex flex-col gap-2">
-            <div className="border-b-primary h-24 w-full overflow-hidden border-b-2">
-              <img
-                className="h-full w-full object-cover"
-                src="star-lord.webp"
-                alt="Star-Lord"
-              />
-            </div>
-
-            <div className="text-textPrimary flex items-center justify-between text-[8px] font-semibold">
-              <span>Star-Lord</span>
-              <img
-                src="/icones/heart/Path Copy 2@1,5x.svg"
-                alt="Favoritar"
-                className="h-2 w-2"
-              />
-            </div>
+        {filteredHeros.map((hero) => (
+          <div key={hero.id} onClick={() => handleCardClick(hero)}>
+            <HeroCard
+              name={hero.title}
+              image={hero.image}
+              onFavoriteClick={() => console.log("Favoritar", hero.title)}
+            />
           </div>
         ))}
       </section>
