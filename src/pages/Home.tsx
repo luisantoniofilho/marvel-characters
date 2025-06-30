@@ -9,6 +9,8 @@ type HomeProps = {
   setSearch: (value: string) => void;
   setSelectedHero: React.Dispatch<React.SetStateAction<HeroType | null>>;
   heros: HeroType[];
+  favorites: number[];
+  setFavorites: React.Dispatch<React.SetStateAction<number[]>>;
 };
 
 export default function Home({
@@ -16,13 +18,21 @@ export default function Home({
   setSearch,
   setSelectedHero,
   heros,
+  favorites,
+  setFavorites,
 }: HomeProps) {
   const [sortAsc, setSortAsc] = useState(true);
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+
   const navigate = useNavigate();
 
   let filteredHeros = (heros ?? []).filter((hero) =>
     hero.title.toLowerCase().includes(search.toLowerCase()),
   );
+
+  if (showOnlyFavorites) {
+    filteredHeros = filteredHeros.filter((hero) => favorites.includes(hero.id));
+  }
 
   filteredHeros = filteredHeros.sort((a, b) => {
     if (a.title < b.title) return sortAsc ? -1 : 1;
@@ -38,6 +48,18 @@ export default function Home({
 
   function toggleSort() {
     setSortAsc(!sortAsc);
+  }
+
+  function toggleFavorite(id: number) {
+    if (favorites.includes(id)) {
+      setFavorites(favorites.filter((favId) => favId !== id));
+    } else {
+      if (favorites.length >= 5) {
+        alert("Você só pode favoritar até 5 heróis.");
+        return;
+      }
+      setFavorites([...favorites, id]);
+    }
   }
 
   return (
@@ -95,10 +117,18 @@ export default function Home({
           </div>
 
           {/* Favoritos */}
-          <div className="flex gap-1">
+          <div
+            className="flex cursor-pointer gap-1"
+            onClick={() => setShowOnlyFavorites((prev) => !prev)}
+            title={showOnlyFavorites ? "Mostrar todos" : "Mostrar favoritos"}
+          >
             <img
               className="h-2"
-              src="/icones/heart/Path.svg"
+              src={
+                showOnlyFavorites
+                  ? "/icones/heart/Path@3x.png"
+                  : "/icones/heart/Path Copy 2@3x.png"
+              }
               alt="Mostrar favoritos"
             />
             <span className="text-primary/75 text-[6.5px]">
@@ -114,7 +144,8 @@ export default function Home({
             <HeroCard
               name={hero.title}
               image={hero.image}
-              onFavoriteClick={() => console.log("Favoritar", hero.title)}
+              onFavoriteClick={() => toggleFavorite(hero.id)}
+              isFavorited={favorites.includes(hero.id)}
             />
           </div>
         ))}
