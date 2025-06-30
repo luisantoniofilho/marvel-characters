@@ -1,58 +1,49 @@
 [
   {
     "id": 1,
-    "title": "Spider-Man",
-    "image": "https://upload.wikimedia.org/wikipedia/en/0/0c/Spiderman50.jpg",
-    "thumbnail": "https://upload.wikimedia.org/wikipedia/en/f/f3/Spider-Man_%28Miles_Morales%29.png",
-    "comicsCount": 320,
-    "moviesCount": 5,
-    "lastComicDate": "2025-05-14",
+    "title": "Hulk",
+    "description": "O Hulk, por vezes referido como O Incrível Hulk é um personagem de quadrinhos/banda desenhada do gênero super-herói, propriedade da Marvel Comics, editora pela qual as histórias do personagem são publicados desde sua criação, nos anos 1960.",
+    "image": "/hulk transparente.png",
+    "thumbnail": "",
+    "comicsCount": 290,
+    "moviesCount": 4,
+    "lastComicDate": "2025-06-01",
     "recentComics": [
       {
-        "title": "Spider-Verse #1",
-        "image": "https://static.wikia.nocookie.net/marveldatabase/images/3/34/Spider-Verse_Vol_2_1.jpg"
-      },
-      {
-        "title": "Amazing Spider-Man #900",
-        "image": "https://static.wikia.nocookie.net/marveldatabase/images/8/85/Amazing_Spider-Man_Vol_6_900.jpg"
+        "title": "The Immortal Hulk #1",
+        "image": "/hulk-quadrinhos.jpg"
       }
     ]
   },
   {
     "id": 2,
-    "title": "Iron Man",
-    "image": "https://upload.wikimedia.org/wikipedia/en/e/e0/Iron_Man_bleeding_edge.jpg",
-    "thumbnail": "https://static.wikia.nocookie.net/marveldatabase/images/9/91/Iron_Man_Tony_Stark_Earth-616_from_Tony_Stark_Iron_Man_Vol_1_1_001.png",
-    "comicsCount": 210,
-    "moviesCount": 3,
-    "lastComicDate": "2025-03-21",
+    "title": "Thor",
+    "description": "Thor é um super-herói da Marvel Comics inspirado no deus do trovão da mitologia nórdica. Membro dos Vingadores, ele empunha o poderoso martelo Mjölnir e protege os Nove Reinos com coragem, sabedoria e força sobrenatural desde sua estreia nos quadrinhos nos anos 1960.",
+    "image": "/thor transparente.png",
+    "thumbnail": "",
+    "comicsCount": 265,
+    "moviesCount": 4,
+    "lastComicDate": "2025-05-20",
     "recentComics": [
       {
-        "title": "Iron Man: Extremis",
-        "image": "https://static.wikia.nocookie.net/marveldatabase/images/e/e1/Iron_Man_Vol_4_1.jpg"
-      },
-      {
-        "title": "Invincible Iron Man #1",
-        "image": "https://static.wikia.nocookie.net/marveldatabase/images/d/db/Invincible_Iron_Man_Vol_3_1.jpg"
+        "title": "Thor: God of Thunder #1",
+        "image": "/thor-quadrinhos.jpg"
       }
     ]
   },
   {
     "id": 3,
-    "title": "Captain America",
-    "image": "https://upload.wikimedia.org/wikipedia/en/9/91/CaptainAmerica109.jpg",
-    "thumbnail": "https://static.wikia.nocookie.net/marveldatabase/images/2/29/Steve_Rogers_Earth-616_from_Captain_America_Steve_Rogers_Vol_1_2_001.png",
-    "comicsCount": 275,
-    "moviesCount": 4,
-    "lastComicDate": "2025-04-18",
+    "title": "Drax",
+    "description": "Drax, o Destruidor, é um guerreiro intergaláctico da Marvel Comics movido por um desejo de vingança contra Thanos. Conhecido por sua força extrema e literalidade, ele é um membro essencial dos Guardiões da Galáxia e símbolo de lealdade e coragem.",
+    "image": "/drax transparente.png",
+    "thumbnail": "",
+    "comicsCount": 190,
+    "moviesCount": 3,
+    "lastComicDate": "2025-04-11",
     "recentComics": [
       {
-        "title": "Sentinel of Liberty",
-        "image": "https://static.wikia.nocookie.net/marveldatabase/images/f/fb/Captain_America_Sentinel_of_Liberty_Vol_2_1.jpg"
-      },
-      {
-        "title": "Captain America #25",
-        "image": "https://static.wikia.nocookie.net/marveldatabase/images/3/3d/Captain_America_Vol_7_25.jpg"
+        "title": "Drax #1",
+        "image": "/drax-quadrinhos.jpg"
       }
     ]
   }
