@@ -1,4 +1,4 @@
-export default function HeroDetails() {
+import SearchBar from "../components/SearchBar";
   return (
     <main className="bg-tertiary text-textPrimary relative flex h-[95vh] w-full flex-col overflow-x-hidden">
       {/* Cabeçalho com logo e busca */}
@@ -10,14 +10,13 @@ export default function HeroDetails() {
             alt="Marvel logo"
           />
 
-          <div className="text-primary flex h-5 w-64 items-center gap-3 rounded-full bg-white px-3">
-            <img className="w-2" src="/busca/Lupa/Shape.png" alt="Lupa" />
-            <input
-              type="text"
-              placeholder="Procure por heróis"
-              className="placeholder:text-textSecondary flex-1 bg-transparent text-[10px] outline-none placeholder:text-[6px]"
-            />
-          </div>
+          <SearchBar
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="text-primary h-5 w-64 bg-white"
+            inputClassName="text-[10px] placeholder:text-textSecondary placeholder:text-[6px]"
+            iconSize="w-2"
+          />
         </div>
       </section>
 

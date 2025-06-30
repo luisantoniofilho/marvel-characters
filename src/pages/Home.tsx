@@ -1,4 +1,5 @@
 import HeroCard from "../components/HeroCard";
+import SearchBar from "../components/SearchBar";
 
 export default function Home() {
   const { heros, isLoading, error } = useHeros();
@@ -14,22 +15,18 @@ export default function Home() {
         <h1 className="text-textPrimary text-sm font-bold">
           EXPLORE O UNIVERSO
         </h1>
-
         <h3 className="mb-4 text-[6px]">
           Mergulhe no domínio deslumbrante de todos os personagens clássicos que
           você ama - e aqueles que você descobrirá em breve!
         </h3>
 
-        <div className="bg-secondary text-primary flex h-7 w-[77%] items-center gap-6 rounded-full px-4">
-          <span>
-            <img className="w-3" src="/busca/Lupa/Shape.png" alt="Lupa" />
-          </span>
-          <input
-            className="placeholder:text-primary/60 h-full flex-1 bg-transparent pb-1 outline-none placeholder:text-[8px]"
-            type="text"
-            placeholder="Procure por heróis"
-          />
-        </div>
+        <SearchBar
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="bg-secondary text-primary h-7 w-[77%]"
+          inputClassName="placeholder:text-primary/60 h-full pb-1 text-[8px] placeholder:text-[8px]"
+          iconSize="w-3"
+        />
       </section>
 
       <section className="mb-4 flex items-center justify-between text-[8px]">
