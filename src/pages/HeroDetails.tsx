@@ -36,39 +36,43 @@ export default function HeroDetails({
   }
 
   return (
-    <main className="bg-tertiary text-textPrimary relative flex h-[95vh] w-full flex-col overflow-x-hidden">
+    <main className="bg-tertiary text-textPrimary relative flex min-h-screen w-full flex-col overflow-x-hidden">
       {/* Cabeçalho */}
-      <section className="flex items-center justify-between px-16 py-2">
-        <div className="flex items-center gap-8">
+      <section className="flex gap-3 px-16 py-4 md:items-center lg:justify-around">
+        <div className="flex justify-center md:justify-start">
           <img
-            className="w-24 cursor-pointer"
+            className="w-20 cursor-pointer md:w-48"
             src="/logo/Logo transparente.png"
             alt="Marvel logo"
             onClick={() => navigate("/")}
           />
+        </div>
 
+        <div className="flex justify-center md:flex-1">
           <SearchBar
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="text-primary h-5 w-64 bg-white"
-            inputClassName="text-[10px] placeholder:text-textSecondary placeholder:text-[6px]"
+            className="text-primary h-6 w-64 bg-white md:h-7 md:w-96"
+            inputClassName="text-[9px] md:text-sm  placeholder:text-textSecondary md:placeholder:text-sm placeholder:text-[7px]"
             iconSize="w-2"
           />
         </div>
       </section>
 
       {/* Bloco principal */}
-      <section className="relative z-10 flex items-start gap-12 px-16 py-6">
+      <section className="relative z-10 flex flex-col items-start gap-6 px-10 py-6 sm:flex-row md:items-start md:gap-12 md:px-16">
         {/* Texto de fundo */}
-        <h1 className="absolute -top-2 left-28 z-0 text-[140px] font-black text-white uppercase">
+        <h1 className="pointer-events-none absolute -top-4 left-1/2 z-0 -translate-x-1/2 text-[80px] font-black text-white uppercase sm:top-15 sm:left-85 sm:text-[180px] lg:left-150">
           {hero.title.split(" ")[0].toUpperCase()}
         </h1>
 
         <div className="z-10 flex-1">
-          <div className="mb-2 flex items-center gap-14">
-            <h2 className="text-lg font-bold">{hero.title.toUpperCase()}</h2>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-20 lg:mb-6">
+            <h2 className="text-lg font-bold md:text-3xl">
+              {hero.title.toUpperCase()}
+            </h2>
             <img
-              className="h-3 cursor-pointer"
+              className="h-4 w-4 cursor-pointer"
               src={
                 favorites.includes(hero.id)
                   ? "/icones/heart/Path@3x.png"
@@ -79,11 +83,11 @@ export default function HeroDetails({
             />
           </div>
 
-          <p className="text-textSecondary mb-4 w-36 pr-2 text-[7px] leading-3">
+          <p className="text-textSecondary mb-4 w-full pr-2 text-[7px] sm:text-lg sm:text-[10px] md:leading-6 lg:mb-6 lg:text-xl lg:leading-8">
             {hero.description || "Descrição não disponível."}
           </p>
 
-          <div className="mb-8 flex flex-col">
+          <div className="flex flex-col md:mb-8">
             {/* Quadrinhos e filmes */}
             <div className="mb-4 flex flex-wrap gap-8 text-[8px]">
               <Label
@@ -102,13 +106,13 @@ export default function HeroDetails({
               />
             </div>
 
-            <div className="flex items-center gap-2 text-[7px] font-medium">
+            <div className="flex items-center gap-2 text-[7px] font-medium md:text-sm">
               <span>Rating:</span>
-              <img className="h-1.5" src="/review/Group 4@3x.png" />
+              <img className="h-2" src="/review/Group 4@3x.png" />
             </div>
 
             <div>
-              <span className="text-[6px] font-semibold">
+              <span className="text-[6px] font-semibold md:text-xs">
                 Último quadrinho: {hero.lastComicDate}
               </span>
             </div>
@@ -116,19 +120,21 @@ export default function HeroDetails({
         </div>
 
         {/* Imagem do personagem */}
-        <div className="relative z-10 -mt-6">
+        <div className="relative z-10 -mt-30 flex w-full justify-center pl-20 sm:mt-0 sm:w-auto sm:flex-shrink-0">
           <img
             src={hero.image}
             alt={hero.title}
-            className="w-[400px] drop-shadow-xl"
+            className="w-52 drop-shadow-xl sm:w-[300px]"
           />
         </div>
       </section>
 
       {/* Últimos lançamentos */}
-      <section className="px-14">
-        <h2 className="mb-6 text-[10px] font-bold">Últimos lançamentos</h2>
-        <div className="grid grid-cols-6 gap-6">
+      <section className="px-6 md:px-14">
+        <h2 className="mb-6 text-[9px] font-bold md:text-xs lg:text-lg">
+          Últimos lançamentos
+        </h2>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 md:gap-6 xl:grid-cols-6">
           {hero.recentComics.map((comic, i) => (
             <ComicCard key={i} image={comic.image} title={comic.title} />
           ))}
