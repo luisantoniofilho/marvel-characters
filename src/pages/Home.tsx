@@ -3,6 +3,7 @@ import HeroCard from "../components/HeroCard";
 import SearchBar from "../components/SearchBar";
 import type { HeroType } from "../types/HeroType";
 import { useState } from "react";
+import { toggleFavorite } from "../utils/toggleFavorite";
 
 type HomeProps = {
   search: string;
@@ -50,18 +51,6 @@ export default function Home({
 
   function toggleSort() {
     setSortAsc(!sortAsc);
-  }
-
-  function toggleFavorite(id: number) {
-    if (favorites.includes(id)) {
-      setFavorites(favorites.filter((favId) => favId !== id));
-    } else {
-      if (favorites.length >= 5) {
-        alert("Você só pode favoritar até 5 heróis.");
-        return;
-      }
-      setFavorites([...favorites, id]);
-    }
   }
 
   return (
@@ -153,7 +142,9 @@ export default function Home({
             <HeroCard
               name={hero.title}
               image={hero.image}
-              onFavoriteClick={() => toggleFavorite(hero.id)}
+              onFavoriteClick={() =>
+                toggleFavorite(hero.id, favorites, setFavorites)
+              }
               isFavorited={favorites.includes(hero.id)}
             />
           </div>

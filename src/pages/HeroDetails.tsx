@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import type { HeroType } from "../types/HeroType";
 import { Label } from "../components/Label";
 import ComicCard from "../components/RecentComicCard";
+import { toggleFavorite } from "../utils/toggleFavorite";
 
 type HeroDetailsProps = {
   search: string;
@@ -22,18 +23,6 @@ export default function HeroDetails({
   const navigate = useNavigate();
 
   if (!hero) return <p>Nenhum herói selecionado.</p>;
-
-  function toggleFavorite(id: number) {
-    if (favorites.includes(id)) {
-      setFavorites(favorites.filter((favId) => favId !== id));
-    } else {
-      if (favorites.length >= 5) {
-        alert("Você só pode favoritar até 5 heróis.");
-        return;
-      }
-      setFavorites([...favorites, id]);
-    }
-  }
 
   return (
     <main className="bg-tertiary text-textPrimary relative flex min-h-screen w-full flex-col overflow-x-hidden">
@@ -80,7 +69,7 @@ export default function HeroDetails({
                   : "/icones/heart/Path Copy 2@1,5x.svg"
               }
               alt="Favoritar"
-              onClick={() => toggleFavorite(hero.id)}
+              onClick={() => toggleFavorite(hero.id, favorites, setFavorites)}
             />
           </div>
 
