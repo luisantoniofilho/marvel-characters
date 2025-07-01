@@ -1,13 +1,13 @@
 Marvel Heroes - Case Técnico
 
-- Sobre o projeto
+SOBRE O PROJETO
 
-Esta aplicação é uma SPA em React que permite navegar pela lista dos personagens da Marvel, visualizar detalhes e marcar até 5 favoritos, respeitando os requisitos do desafio técnico.
+- Esta aplicação é uma SPA em React que permite navegar pela lista dos personagens da Marvel, visualizar detalhes e marcar até 5 favoritos, respeitando os requisitos do desafio técnico.
 
-Caso queira testá-la online, acesse o link a seguir no navegador:
-https://luis-antonio-marvel-characters.vercel.app/
+- Caso queira testá-la online, acesse o link a seguir no navegador:
+  https://luis-antonio-marvel-characters.vercel.app/
 
-Como rodar a aplicação localmente
+COMO RODAR A APLICAÇÃO LOCALMENTE
 
 Pré-requisitos:
 
@@ -59,7 +59,7 @@ Testando a aplicação:
 
 - Os favoritos são persistidos localmente para manter a seleção após recarregar a página.
 
-Cuidados e boas práticas adotados:
+CUIDADOS E BOAS PRÁTICAS ADOTADAS:
 
 - TypeScript: Uso completo de tipagem estática para maior segurança e manutenção do código.
 
@@ -75,7 +75,7 @@ Cuidados e boas práticas adotados:
 
 - Deploy: Projeto hospedado no Vercel com integração contínua via GitHub para facilitar atualizações e avaliação.
 
-Resposta técnica: Como lidaria com o limite de 5 favoritos usando Redux?
+RESPOSTA TÉCNICA: Como lidaria com o limite de 5 favoritos usando Redux?
 
 - No redux eu centralizaria a lógica de favoritos no store global. A action responsável por adicionar um favorito verificaria o tamanho atual da lista de favoritos antes de permitir a adição de um novo. Caso já existam 5 favoritos, a action impediria a inclusão de mais, garantindo assim o limite estabelecido.
 
