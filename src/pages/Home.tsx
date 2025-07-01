@@ -26,14 +26,17 @@ export default function Home({
 
   const navigate = useNavigate();
 
+  // Filtrando heróis com base no texto buscado
   let filteredHeros = (heros ?? []).filter((hero) =>
     hero.title.toLowerCase().includes(search.toLowerCase()),
   );
 
+  // Exibir apenas favoritos se habilitado
   if (showOnlyFavorites) {
     filteredHeros = filteredHeros.filter((hero) => favorites.includes(hero.id));
   }
 
+  // Ordenação por título
   filteredHeros = filteredHeros.sort((a, b) => {
     if (a.title < b.title) return sortAsc ? -1 : 1;
     if (a.title > b.title) return sortAsc ? 1 : -1;
@@ -63,6 +66,7 @@ export default function Home({
 
   return (
     <main className="mx-4 mt-4 flex flex-col md:mx-10">
+      {/* Cabeçalho */}
       <section className="mb-8 flex flex-col items-center text-center">
         <img
           className="mb-2 w-32 md:w-48"
@@ -86,6 +90,7 @@ export default function Home({
         />
       </section>
 
+      {/* Ordenação e favoritos */}
       <section className="mb-4 flex items-center justify-between gap-2 text-[8px] lg:px-40">
         <h4 className="text-textTertiary text-[8px] md:text-sm">
           Encontrados {filteredHeros.length} heróis
@@ -141,6 +146,7 @@ export default function Home({
         </div>
       </section>
 
+      {/* Lista de heróis */}
       <section className="mb-16 grid grid-cols-4 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 lg:px-40 xl:grid-cols-5">
         {filteredHeros.map((hero) => (
           <div key={hero.id} onClick={() => handleCardClick(hero)}>

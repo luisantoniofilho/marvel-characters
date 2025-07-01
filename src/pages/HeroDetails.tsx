@@ -66,6 +66,7 @@ export default function HeroDetails({
           {hero.title.split(" ")[0].toUpperCase()}
         </h1>
 
+        {/* Informações do herói */}
         <div className="z-10 flex-1">
           <div className="flex flex-wrap items-center gap-2 sm:gap-20 lg:mb-6">
             <h2 className="text-lg font-bold md:text-3xl">
@@ -83,6 +84,7 @@ export default function HeroDetails({
             />
           </div>
 
+          {/* Descrição */}
           <p className="text-textSecondary mb-4 w-full pr-2 text-[7px] sm:text-lg sm:text-[10px] md:leading-6 lg:mb-6 lg:text-xl lg:leading-8">
             {hero.description || "Descrição não disponível."}
           </p>
@@ -106,11 +108,13 @@ export default function HeroDetails({
               />
             </div>
 
+            {/* Rating */}
             <div className="flex items-center gap-2 text-[7px] font-medium md:text-sm">
               <span>Rating:</span>
               <img className="h-2" src="/review/Group 4@3x.png" />
             </div>
 
+            {/* Lista de quadrinhos */}
             <div>
               <span className="text-[6px] font-semibold md:text-xs">
                 Último quadrinho: {hero.lastComicDate}
