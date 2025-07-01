@@ -41,7 +41,7 @@ export default function HeroDetails({
           <SearchBar
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="text-primary h-6 w-64 bg-white md:h-7 md:w-96"
+            className="text-primary h-5 w-40 bg-white sm:h-6 sm:w-64 md:h-7 md:w-96"
             inputClassName="text-[9px] md:text-sm  placeholder:text-textSecondary md:placeholder:text-sm placeholder:text-[7px]"
             iconSize="w-2"
           />
