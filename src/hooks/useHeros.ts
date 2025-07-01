@@ -25,7 +25,8 @@ export default function useHeros() {
         const baseURL = "https://gateway.marvel.com/v1/public/characters";
 
         // Api não funciona, retorna erro 418 (código de erro que nem deveria ser utilizado)
-        const url = `${baseURL}?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${heroName}`;
+        const url = `${baseURL}?ts=${ts}&apikey=${publicKey}&hash=${hash}&nameStartsWith=${heroName}&limit=20`;
+        
 
         const res = await fetch(url);
         const json = await res.json();
