@@ -7,83 +7,76 @@ Esta aplicação é uma SPA em React que permite navegar pela lista dos personag
 Caso queira testá-la online, acesse o link a seguir no navegador:
 https://luis-antonio-marvel-characters.vercel.app/
 
-- Como rodar a aplicação localmente
+Como rodar a aplicação localmente
 
 Pré-requisitos:
 
-Node.js (versão 16+ recomendada)
+- Node.js (versão 16+ recomendada)
 
-npm ou yarn
+- npm ou yarn
 
-- Passos para rodar localmente
+Passos para rodar localmente
 
 Clone o repositório:
 
-git clone https://github.com/luisantoniofilho/marvel-characters.git
-cd marvel-characters
+- git clone https://github.com/luisantoniofilho/marvel-characters.git
+  cd marvel-characters
+
 Instale as dependências:
 
-npm install
-
-# ou
-
-yarn install
+- npm install ou yarn install
 
 (Opcional) Configure variáveis de ambiente:
 
 Importante: A API oficial da Marvel não está funcionando, então o projeto está utilizando uma API mock com JSON para garantir o funcionamento local, que nao precisa de variáveis de ambiente.
 
-Crie um arquivo .env.local
+- Crie um arquivo .env.local
 
-Adicione suas chaves de API Marvel conforme as instruções (exemplo):
+- Adicione suas chaves de API Marvel conforme as instruções (exemplo):
 
-REACT_APP_MARVEL_PUBLIC_KEY=your_public_key
-REACT_APP_MARVEL_PRIVATE_KEY=your_private_key
+- REACT_APP_MARVEL_PUBLIC_KEY=your_public_key
+- REACT_APP_MARVEL_PRIVATE_KEY=your_private_key
 
 Rode o projeto em modo de desenvolvimento:
 
-npm run dev
+- npm run dev ou yarn dev
 
-# ou
+- Acesse http://localhost:5173 no navegador para testar.
 
-yarn dev
+Testando a aplicação:
 
-Acesse http://localhost:5173 no navegador para testar.
+- Navegue na lista inicial de heróis.
 
-- Testando a aplicação:
+- Utilize a busca para filtrar por nome.
 
-Navegue na lista inicial de heróis.
+- Ordene os personagens pelo nome em ordem ascendente ou descendente.
 
-Utilize a busca para filtrar por nome.
+- Marque até 5 personagens como favoritos.
 
-Ordene os personagens pelo nome em ordem ascendente ou descendente.
+- Confira a página de detalhes de cada personagem com informações e quadrinhos recentes.
 
-Marque até 5 personagens como favoritos.
+- Teste o layout responsivo em diferentes tamanhos de tela.
 
-Confira a página de detalhes de cada personagem com informações e quadrinhos recentes.
+- Os favoritos são persistidos localmente para manter a seleção após recarregar a página.
 
-Teste o layout responsivo em diferentes tamanhos de tela.
+Cuidados e boas práticas adotados:
 
-Os favoritos são persistidos localmente para manter a seleção após recarregar a página.
+- TypeScript: Uso completo de tipagem estática para maior segurança e manutenção do código.
 
-- Cuidados e boas práticas adotados:
+- ESLint: Configurado para garantir padrões de qualidade e evitar erros comuns.
 
-TypeScript: Uso completo de tipagem estática para maior segurança e manutenção do código.
+- Prettier: Padroniza o estilo do código, facilitando leitura e colaboração.
 
-ESLint: Configurado para garantir padrões de qualidade e evitar erros comuns.
+- Modularização: Componentes pequenos e reutilizáveis para melhor organização.
 
-Prettier: Padroniza o estilo do código, facilitando leitura e colaboração.
+- Responsividade: Layout adaptado para dispositivos móveis e desktops.
 
-Modularização: Componentes pequenos e reutilizáveis para melhor organização.
+- Git: Commits frequentes e descritivos, facilitando o entendimento do histórico.
 
-Responsividade: Layout adaptado para dispositivos móveis e desktops.
+- Deploy: Projeto hospedado no Vercel com integração contínua via GitHub para facilitar atualizações e avaliação.
 
-Git: Commits frequentes e descritivos, facilitando o entendimento do histórico.
+Resposta técnica: Como lidaria com o limite de 5 favoritos usando Redux?
 
-Deploy: Projeto hospedado no Vercel com integração contínua via GitHub para facilitar atualizações e avaliação.
+- No redux eu centralizaria a lógica de favoritos no store global. A action responsável por adicionar um favorito verificaria o tamanho atual da lista de favoritos antes de permitir a adição de um novo. Caso já existam 5 favoritos, a action impediria a inclusão de mais, garantindo assim o limite estabelecido.
 
-- Resposta técnica: Como lidaria com o limite de 5 favoritos usando Redux?
-
-No redux eu centralizaria a lógica de favoritos no store global. A action responsável por adicionar um favorito verificaria o tamanho atual da lista de favoritos antes de permitir a adição de um novo. Caso já existam 5 favoritos, a action impediria a inclusão de mais, garantindo assim o limite estabelecido.
-
-Essa forma de organizar a lógica no Redux ajuda a manter o controle dos favoritos centralizado e evita que a regra do limite seja quebrada, mesmo se diferentes partes da aplicação tentarem alterar a lista ao mesmo tempo. Assim, a interface sempre fica atualizada corretamente e o usuário tem uma experiência consistente.
+- Essa forma de organizar a lógica no Redux ajuda a manter o controle dos favoritos centralizado e evita que a regra do limite seja quebrada, mesmo se diferentes partes da aplicação tentarem alterar a lista ao mesmo tempo. Assim, a interface sempre fica atualizada corretamente e o usuário tem uma experiência consistente.
